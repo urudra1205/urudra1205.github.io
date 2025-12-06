@@ -405,7 +405,7 @@ nav {
   padding: 25px;
   background: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 18px rgba(0, 198, 167, 0.2);
   font-family: Arial, sans-serif;
 }
 
@@ -443,10 +443,11 @@ nav {
 .contact-form textarea {
   height: 120px;
   resize: none;
+  color: #070b0f;
 }
 
 .contact-form button {
-  background: #007bff;
+  background: rgba(0, 198, 167, 0.2);
   color: #fff;
   padding: 12px;
   font-size: 16px;
@@ -457,7 +458,7 @@ nav {
 }
 
 .contact-form button:hover {
-  background: #0056b3;
+  background: rgba(6, 82, 70, 0.2);
 }
 
 
