@@ -463,7 +463,7 @@ nav {
   transform: scale(0.98);
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn { 
   to {
     transform: translateY(0);
     opacity: 1;
@@ -473,6 +473,7 @@ nav {
 
 
 .social-links a {
+    align-items: center;
     font-size: 2rem;
     margin: 0 1rem;
     color: var(--subtle-text-color);
