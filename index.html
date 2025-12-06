@@ -1,158 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rudra Upadhyay | UI Designer</title>
-    
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Upadhyay – UI Designer</title>
+  <meta name="description" content="Comprehensive portfolio site for Rudra Upadhyay, UI Designer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&family=Fira+Code:wght@400;500&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg-panel: rgba(17, 17, 17, 0.65);
+      --bg-card: rgba(255, 255, 255, 0.07);
+      --text-primary: #f5f5f5;
+      --text-secondary: #cfcfcf;
+      --accent: #38bdf8;
+      --accent-2: #34d399;
+      --border-color: rgba(255, 255, 255, 0.1);
+      font-family: "Inter", "Poppins", "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body[data-theme="light"] {
+      --bg-panel: rgba(255, 255, 255, 0.8);
+      --bg-card: rgba(0, 0, 0, 0.05);
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --accent: #2563eb;
+      --accent-2: #059669;
+      --border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: radial-gradient(circle at top left, #000000 0%, #050505 30%, #0a0a0a 55%, #101010 70%, #ffffff 100%);
+      color: var(--text-primary);
+      transition: background 0.6s ease, color 0.3s ease;
+    }
+
+    .panel {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(18px);
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body>
-
-    <!-- Header & Navigation -->
-    <header>
-        <nav>
-            <a href="#hero" class="logo">Rudra U.</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
+<body data-theme="dark" class="antialiased">
+  <div class="min-h-screen w-full px-5 py-10">
+    <div id="pageFrame" class="mx-auto w-full max-w-[1280px] min-h-[1920px] rounded-[32px] border border-white/5 bg-gradient-to-br from-black/60 via-neutral-900/50 to-white/10 p-8 shadow-2xl">
+      <header class="panel rounded-3xl px-6 py-5 flex flex-wrap items-center justify-between gap-4" data-animate>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-2xl bg-gradient-to-br from-emerald-400 to-sky-500 text-black font-semibold flex items-center justify-center">RU</div>
+          <div>
+            <p class="text-sm uppercase tracking-[0.3em] text-emerald-300">Rudra Upadhyay</p>
+            <p class="text-neutral-400 text-sm mono">UI Designer</p>
+          </div>
+        </div>
+        <nav class="flex flex-wrap items-center gap-4 text-sm text-neutral-300">
+          <a href="#hero" class="hover:text-white transition-colors">Home</a>
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+          <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
         </nav>
-    </header>
+        <button id="themeToggle" class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white hover:border-white/40 transition">
+          <span class="mono">Dark</span>
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+        </button>
+      </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="hero">
-            <div class="hero-content">
-                <h1 class="fade-in">Hi, I'm Rudra Upadhyay</h1>
-                <p class="fade-in">A passionate UI Designer crafting intuitive and beautiful digital experiences.</p>
-                <a href="#portfolio" class="cta-button fade-in">View My Work</a>
+      <main class="mt-8 space-y-12">
+        <section id="hero" class="panel rounded-3xl px-8 py-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center" data-animate>
+          <div class="space-y-6">
+            <p class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-emerald-300">
+              Designing clarity
+            </p>
+            <div>
+              <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
+                Rudra Upadhyay
+              </h1>
+              <p class="mt-4 text-lg text-neutral-300">
+                UI Designer blending thoughtful typography, contrast, and interaction to craft interfaces that feel effortless.
+              </p>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="scroll-animate">
-            <div class="container">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <div class="about-image">
-                        <!-- IMPORTANT: Replace with your photo -->
-                        <img src="images/profile.jpg" alt="Rudra Upadhyay">
-                    </div>
-                    <div class="about-text">
-                        <p>
-                            I am a UI designer with a keen eye for detail and a love for creating user-centric designs. My design philosophy revolves around simplicity, clarity, and functionality. I believe that great design is not just about aesthetics, but about solving problems and creating seamless interactions.
-                        </p>
-                        <p>
-                            With experience in wireframing, prototyping, and visual design, I bring ideas to life using tools like Figma, Sketch, and the Adobe Creative Suite.
-                        </p>
-                        <h3>My Skills</h3>
-                        <div class="skills">
-                            <span>Figma</span>
-                            <span>Adobe XD</span>
-                            <span>Sketch</span>
-                            <span>Prototyping</span>
-                            <span>User Research</span>
-                            <span>Mobile App Design</span>
-                            <span>Web Design</span>
-                        </div>
-                    </div>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <button class="group inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-3 font-semibold transition hover:-translate-y-0.5">
+                View Work
+                <span class="transition group-hover:translate-x-1">→</span>
+              </button>
+              <button id="copyEmailHero" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:border-white/60 transition">
+                Copy email
+              </button>
+            </div>
+            <p class="mono text-sm text-neutral-400">Currently exploring multi-theme design systems · Based in Mumbai · Responds within 24h</p>
+          </div>
+          <div class="relative">
+            <div class="absolute inset-0 rounded-[32px] bg-gradient-to-br from-emerald-400/30 via-sky-400/20 to-transparent blur-3xl"></div>
+            <div class="relative rounded-[32px] border border-white/10 bg-black/60 px-8 py-10 text-center">
+              <div class="mx-auto h-56 w-56 rounded-[32px] bg-gradient-to-br from-black via-neutral-900 to-neutral-700 flex items-center justify-center">
+                <div class="h-40 w-40 rounded-full border border-dashed border-white/20 flex flex-col items-center justify-center gap-2">
+                  <span class="text-sm text-neutral-400">UI Preview</span>
+                  <span class="text-2xl font-semibold">RU</span>
+                  <span class="text-xs text-neutral-500">Crafted pixels</span>
                 </div>
+              </div>
+              <p class="mt-6 text-neutral-300 text-sm">
+                Energetic contrast, tactile depth, and frictionless flow — the core of each project.
+              </p>
             </div>
+          </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="scroll-animate">
-            <div class="container">
-                <h2>My Portfolio</h2>
-                <div class="portfolio-grid">
-                    
-                    <!-- Portfolio Item 1 -->
-                    <div class="portfolio-item">
-                        <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project1.jpg" alt="Project 1">
-                        <div class="portfolio-overlay">
-                            <h3>Project Title 1</h3>
-                            <p>Mobile App Design</p>
-                            <a href="#" class="view-project-btn">View Project</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Portfolio Item 2 -->
-                    <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project2.jpg" alt="Project 2">
-                        <div class="portfolio-overlay">
-                            <h3>Project Title 2</h3>
-                            <p>Website Redesign</p>
-                            <a href="#" class="view-project-btn">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Portfolio Item 3 -->
-                    <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project3.jpg" alt="Project 3">
-                        <div class="portfolio-overlay">
-                            <h3>Project Title 3</h3>
-                            <p>Dashboard UI</p>
-                             <a href="#" class="view-project-btn">View Project</a>
-                        </div>
-                    </div>
-
-                    <!-- Portfolio Item 4 -->
-                    <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project4.jpg" alt="Project 4">
-                        <div class="portfolio-overlay">
-                            <h3>Project Title 4</h3>
-                            <p>E-commerce Experience</p>
-                             <a href="#" class="view-project-btn">View Project</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more portfolio items as needed -->
-
-                </div>
+        <section id="about" class="panel rounded-3xl px-8 py-10 grid gap-8 lg:grid-cols-2" data-animate>
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">About</p>
+            <h2 class="mt-3 text-3xl font-semibold">Crafting clarity through intentional systems</h2>
+            <p class="mt-4 text-neutral-300">
+              With 5+ years collaborating with product teams, I translate layered ideas into intuitive flows. My process is anchored in research, rapid prototyping, and motion principles that guide attention without overwhelming.
+            </p>
+          </div>
+          <div class="space-y-4 text-neutral-300">
+            <div class="card rounded-2xl px-6 py-5">
+              <p class="text-sm text-neutral-400">Focus</p>
+              <p class="mt-2 text-lg font-medium">Scalable design systems & multi-theme experiences</p>
             </div>
+            <div class="card rounded-2xl px-6 py-5">
+              <p class="text-sm text-neutral-400">Toolbox</p>
+              <p class="mt-2">Figma, After Effects, ProtoPie, Framer, design tokens, accessibility audits.</p>
+            </div>
+          </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="scroll-animate">
-            <div class="container">
-                <h2>Get In Touch</h2>
-                <p>I'm currently available for freelance work and open to new opportunities. If you have a project in mind or just want to say hello, feel free to reach out!</p>
-                <a href="mailto:upadhyayrudra1205@gmail.com" class="email-link">upadhyayrudra1205@gmail.com</a>
-                <div class="social-links">
-                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-                    <a href="#" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                </div>
+        <section id="skills" class="panel rounded-3xl px-8 py-10 space-y-8" data-animate>
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Skills</p>
+              <h2 class="mt-2 text-3xl font-semibold">Core capabilities</h2>
             </div>
+            <div class="text-sm text-neutral-400 mono">Inter · JetBrains Mono · Poppins · Fira Code · Space Grotesk</div>
+          </div>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="card rounded-2xl px-6 py-5">
+              <div class="flex items-center justify-between text-sm">
+                <p>Design Systems</p>
+                <p class="text-neutral-400">92%</p>
+              </div>
+              <div class="mt-3 h-2 rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-emerald-400" style="width:92%"></div>
+              </div>
+            </div>
+            <div class="card rounded-2xl px-6 py-5">
+              <div class="flex items-center justify-between text-sm">
+                <p>Interaction Design</p>
+                <p class="text-neutral-400">88%</p>
+              </div>
+              <div class="mt-3 h-2 rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-sky-400" style="width:88%"></div>
+              </div>
+            </div>
+            <div class="card rounded-2xl px-6 py-5">
+              <div class="flex items-center justify-between text-sm">
+                <p>Prototyping</p>
+                <p class="text-neutral-400">85%</p>
+              </div>
+              <div class="mt-3 h-2 rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-purple-400" style="width:85%"></div>
+              </div>
+            </div>
+            <div class="card rounded-2xl px-6 py-5">
+              <div class="flex items-center justify-between text-sm">
+                <p>Accessibility</p>
+                <p class="text-neutral-400">80%</p>
+              </div>
+              <div class="mt-3 h-2 rounded-full bg-white/10">
+                <div class="h-full rounded-full bg-amber-400" style="width:80%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 text-sm text-neutral-300">
+            <span class="card rounded-full px-4 py-2">UI Design</span>
+            <span class="card rounded-full px-4 py-2">Design Tokens</span>
+            <span class="card rounded-full px-4 py-2">Motion Systems</span>
+            <span class="card rounded-full px-4 py-2">Microcopy</span>
+            <span class="card rounded-full px-4 py-2">Multi-theme</span>
+            <span class="card rounded-full px-4 py-2">Research Synthesis</span>
+          </div>
         </section>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Rudra Upadhyay. All Rights Reserved.</p>
-    </footer>
+        <section id="projects" class="panel rounded-3xl px-8 py-10 space-y-6" data-animate>
+          <div class="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Projects</p>
+              <h2 class="mt-2 text-3xl font-semibold">Selected work</h2>
+            </div>
+            <a href="#contact" class="text-sm text-emerald-300 hover:text-emerald-200 transition">Request full case study →</a>
+          </div>
+          <div class="grid gap-6 md:grid-cols-3">
+            <article class="card rounded-3xl p-6 flex flex-col gap-4">
+              <div class="h-40 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 border border-white/10 flex items-center justify-center">
+                <span class="mono text-neutral-400">Dashboard OS</span>
+              </div>
+              <h3 class="text-xl font-semibold">Dark Mode Insights</h3>
+              <p class="text-sm text-neutral-400">Enterprise analytics suite with adaptive theming and live data cards.</p>
+              <div class="text-xs text-neutral-400">Role: Design Lead · 2024</div>
+            </article>
+            <article class="card rounded-3xl p-6 flex flex-col gap-4">
+              <div class="h-40 rounded-2xl bg-gradient-to-br from-sky-900 via-blue-900 to-indigo-800 border border-white/10 flex items-center justify-center">
+                <span class="mono text-neutral-200">NeoBank</span>
+              </div>
+              <h3 class="text-xl font-semibold">Fintech Motion Kit</h3>
+              <p class="text-sm text-neutral-400">Micro-interaction library improving conversion by 18%.</p>
+              <div class="text-xs text-neutral-400">Role: UI Designer · 2023</div>
+            </article>
+            <article class="card rounded-3xl p-6 flex flex-col gap-4">
+              <div class="h-40 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-700 border border-white/10 flex items-center justify-center">
+                <span class="mono text-neutral-200">HealthFlow</span>
+              </div>
+              <h3 class="text-xl font-semibold">Care Navigation</h3>
+              <p class="text-sm text-neutral-400">Patient-first scheduling platform with contextual guidance.</p>
+              <div class="text-xs text-neutral-400">Role: Product Designer · 2022</div>
+            </article>
+          </div>
+        </section>
 
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
+        <section id="experience" class="panel rounded-3xl px-8 py-10 space-y-8" data-animate>
+          <div>
+            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Experience</p>
+            <h2 class="mt-2 text-3xl font-semibold">Recent roles</h2>
+          </div>
+          <div class="space-y-6">
+            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-lg font-medium">Lead UI Designer · Pixel North</p>
+                <p class="text-sm text-neutral-400">2022 — Present</p>
+              </div>
+              <p class="text-sm text-neutral-300">Built end-to-end design system powering finance + media suites.</p>
+            </div>
+            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-lg font-medium">Product Designer · Lumen Labs</p>
+                <p class="text-sm text-neutral-400">2020 — 2022</p>
+              </div>
+              <p class="text-sm text-neutral-300">Shipped mobile-first experiences for 4M+ users with motion-first storytelling.</p>
+            </div>
+            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <p class="text-lg font-medium">UI Designer · Freelance</p>
+                <p class="text-sm text-neutral-400">2018 — 2020</p>
+              </div>
+              <p class="text-sm text-neutral-300">Partnered with startups to craft MVPs, style guides, and marketing sites.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="panel rounded-3xl px-8 py-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]" data-animate>
+          <div class="space-y-4">
+            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Contact</p>
+            <h2 class="text-3xl font-semibold">Let's co-create bold, useful systems</h2>
+            <p class="text-neutral-300">
+              Drop a line for collaborations, design critiques, or speaking gigs. I usually respond within a day.
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm">
+              <button id="copyEmailContact" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:border-white/60 transition">
+                Copy email
+              </button>
+              <a href="mailto:upadhyayrudra1205@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-emerald-400/90 px-5 py-3 text-black font-semibold hover:bg-emerald-300 transition">
+                Start email
+              </a>
+            </div>
+            <p class="text-sm text-neutral-400 mono">Email: <span id="emailText">upadhyayrudra1205@gmail.com</span></p>
+          </div>
+          <form class="card rounded-3xl px-6 py-6 space-y-4">
+            <div>
+              <label class="text-sm text-neutral-400" for="name">Name</label>
+              <input id="name" type="text" placeholder="Your name" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" />
+            </div>
+            <div>
+              <label class="text-sm text-neutral-400" for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" />
+            </div>
+            <div>
+              <label class="text-sm text-neutral-400" for="message">Message</label>
+              <textarea id="message" placeholder="Tell me about your project" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" rows="4"></textarea>
+            </div>
+            <button type="button" class="w-full rounded-full bg-white text-black py-3 font-semibold hover:-translate-y-0.5 transition">
+              Send message
+            </button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="mt-10 panel rounded-3xl px-6 py-4 flex flex-wrap items-center justify-between text-sm text-neutral-400" data-animate>
+        <span>© <span id="year"></span> Rudra Upadhyay · UI Designer</span>
+        <span class="mono">Made with clarity & motion</span>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const email = 'upadhyayrudra1205@gmail.com';
+      const copyButtons = [
+        document.getElementById('copyEmailHero'),
+        document.getElementById('copyEmailContact')
+      ];
+      const emailText = document.getElementById('emailText');
+      const yearSpan = document.getElementById('year');
+      const body = document.body;
+      const themeToggle = document.getElementById('themeToggle');
+
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      const setTheme = (mode) => {
+        body.setAttribute('data-theme', mode);
+        localStorage.setItem('theme-mode', mode);
+        if (themeToggle) {
+          themeToggle.querySelector('span').textContent = mode === 'dark' ? 'Dark' : 'Light';
+        }
+      };
+
+      const storedTheme = localStorage.getItem('theme-mode');
+      if (storedTheme) {
+        setTheme(storedTheme);
+      }
+
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const current = body.getAttribute('data-theme');
+          setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+      }
+
+      copyButtons.forEach((button) => {
+        if (!button) return;
+        button.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            const original = button.textContent;
+            button.textContent = 'Email copied!';
+            button.classList.add('bg-emerald-400', 'text-black');
+            setTimeout(() => {
+              button.textContent = original;
+              button.classList.remove('bg-emerald-400', 'text-black');
+            }, 1800);
+          } catch (err) {
+            console.error('Clipboard not available:', err);
+            if (emailText) {
+              emailText.textContent = email + ' (copy manually)';
+            }
+            alert('Email: ' + email);
+          }
+        });
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
+    })();
+  </script>
 </body>
 </html>
