@@ -476,6 +476,7 @@ nav {
     align-items: center;
     align-content: center;
     align-self: center;
+    text-align: center;
     font-size: 2rem;
     margin: 0 1rem;
     color: var(--subtle-text-color);
