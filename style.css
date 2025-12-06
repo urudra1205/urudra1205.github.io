@@ -474,6 +474,8 @@ nav {
 
 .social-links a {
     align-items: center;
+    align-content: center;
+    align-self: center;
     font-size: 2rem;
     margin: 0 1rem;
     color: var(--subtle-text-color);
