@@ -1,401 +1,223 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rudra Upadhyay – UI Designer</title>
-  <meta name="description" content="Comprehensive portfolio site for Rudra Upadhyay, UI Designer." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&family=Fira+Code:wght@400;500&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <title>Rudra Upadhyay | Portfolio</title>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <style>
     :root {
-      --bg-panel: rgba(17, 17, 17, 0.65);
-      --bg-card: rgba(255, 255, 255, 0.07);
-      --text-primary: #f5f5f5;
-      --text-secondary: #cfcfcf;
-      --accent: #38bdf8;
-      --accent-2: #34d399;
-      --border-color: rgba(255, 255, 255, 0.1);
-      font-family: "Inter", "Poppins", "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --grad: linear-gradient(135deg, #050505 0%, #0c0c0c 30%, #f5f5f5 100%);
     }
-
-    body[data-theme="light"] {
-      --bg-panel: rgba(255, 255, 255, 0.8);
-      --bg-card: rgba(0, 0, 0, 0.05);
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --accent: #2563eb;
-      --accent-2: #059669;
-      --border-color: rgba(0, 0, 0, 0.08);
-    }
-
     body {
+      font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+      background: var(--grad);
       min-height: 100vh;
-      margin: 0;
-      background: radial-gradient(circle at top left, #000000 0%, #050505 30%, #0a0a0a 55%, #101010 70%, #ffffff 100%);
-      color: var(--text-primary);
-      transition: background 0.6s ease, color 0.3s ease;
     }
-
-    .panel {
-      background-color: var(--bg-panel);
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(18px);
+    .mono { font-family: 'JetBrains Mono', 'Fira Code', monospace; }
+    .grotesk { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+    .glass {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
     }
-
-    .card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-color);
-      transition: transform 0.3s ease, border-color 0.3s ease;
+    .card-hover:hover { transform: translateY(-4px) scale(1.01); }
+    .fade-section { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+    .fade-section.show { opacity: 1; transform: translateY(0); }
+    .tilt:hover { transform: rotate(-1deg) scale(1.01); }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 100%; height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
     }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent);
-    }
-
-    .mono {
-      font-family: "JetBrains Mono", "Fira Code", monospace;
-    }
-
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .nav-link:hover::after { transform: scaleX(1); }
   </style>
 </head>
-<body data-theme="dark" class="antialiased">
-  <div class="min-h-screen w-full px-5 py-10">
-    <div id="pageFrame" class="mx-auto w-full max-w-[1280px] min-h-[1920px] rounded-[32px] border border-white/5 bg-gradient-to-br from-black/60 via-neutral-900/50 to-white/10 p-8 shadow-2xl">
-      <header class="panel rounded-3xl px-6 py-5 flex flex-wrap items-center justify-between gap-4" data-animate>
+<body class="text-white antialiased transition-colors duration-300" id="page">
+  <div class="w-full h-full flex justify-center">
+    <div class="w-[1280px] min-h-[1920px] px-8 py-10 flex flex-col gap-16">
+      <!-- Header -->
+      <header class="flex justify-between items-center sticky top-4 z-20 glass rounded-2xl px-6 py-4 shadow-lg">
         <div class="flex items-center gap-3">
-          <div class="h-11 w-11 rounded-2xl bg-gradient-to-br from-emerald-400 to-sky-500 text-black font-semibold flex items-center justify-center">RU</div>
-          <div>
-            <p class="text-sm uppercase tracking-[0.3em] text-emerald-300">Rudra Upadhyay</p>
-            <p class="text-neutral-400 text-sm mono">UI Designer</p>
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center tilt text-lg grotesk font-semibold">RU</div>
+          <div class="leading-tight">
+            <p class="text-sm text-white/70">Portfolio</p>
+            <p class="text-lg grotesk font-semibold">Rudra Upadhyay</p>
           </div>
         </div>
-        <nav class="flex flex-wrap items-center gap-4 text-sm text-neutral-300">
-          <a href="#hero" class="hover:text-white transition-colors">Home</a>
-          <a href="#about" class="hover:text-white transition-colors">About</a>
-          <a href="#skills" class="hover:text-white transition-colors">Skills</a>
-          <a href="#projects" class="hover:text-white transition-colors">Projects</a>
-          <a href="#experience" class="hover:text-white transition-colors">Experience</a>
-          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        <nav class="flex items-center gap-6 text-sm">
+          <a class="nav-link hover:text-white/80" href="#hero">Home</a>
+          <a class="nav-link hover:text-white/80" href="#about">About</a>
+          <a class="nav-link hover:text-white/80" href="#skills">Skills</a>
+          <a class="nav-link hover:text-white/80" href="#contact">Contact</a>
+          <button id="themeToggle" class="border border-white/20 rounded-xl px-4 py-2 text-xs hover:border-white/50 transition">Toggle mode</button>
         </nav>
-        <button id="themeToggle" class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-white hover:border-white/40 transition">
-          <span class="mono">Dark</span>
-          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-        </button>
       </header>
 
-      <main class="mt-8 space-y-12">
-        <section id="hero" class="panel rounded-3xl px-8 py-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center" data-animate>
-          <div class="space-y-6">
-            <p class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-emerald-300">
-              Designing clarity
-            </p>
-            <div>
-              <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
-                Rudra Upadhyay
-              </h1>
-              <p class="mt-4 text-lg text-neutral-300">
-                UI Designer blending thoughtful typography, contrast, and interaction to craft interfaces that feel effortless.
-              </p>
-            </div>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <button class="group inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-3 font-semibold transition hover:-translate-y-0.5">
-                View Work
-                <span class="transition group-hover:translate-x-1">→</span>
-              </button>
-              <button id="copyEmailHero" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:border-white/60 transition">
-                Copy email
-              </button>
-            </div>
-            <p class="mono text-sm text-neutral-400">Currently exploring multi-theme design systems · Based in Mumbai · Responds within 24h</p>
+      <!-- Hero -->
+      <section id="hero" class="grid md:grid-cols-2 gap-10 items-center fade-section">
+        <div class="space-y-6">
+          <p class="text-sm uppercase tracking-[0.25em] text-white/60">Designer • Developer</p>
+          <h1 class="text-4xl md:text-5xl grotesk font-semibold leading-tight">Hi, I'm <span class="text-white/80">Rudra Upadhyay</span><br/>I build simple, friendly web experiences.</h1>
+          <p class="text-white/70 text-base leading-relaxed">I’m a beginner web enthusiast experimenting with clean layouts, playful hover effects, and smooth scroll animations. Welcome to my little corner of the internet!</p>
+          <div class="flex gap-3">
+            <a href="#contact" class="px-5 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:translate-y-[-2px] transition shadow-lg">Contact me</a>
+            <a href="#skills" class="px-5 py-3 rounded-xl border border-white/30 text-sm hover:border-white hover:translate-y-[-2px] transition">View skills</a>
           </div>
-          <div class="relative">
-            <div class="absolute inset-0 rounded-[32px] bg-gradient-to-br from-emerald-400/30 via-sky-400/20 to-transparent blur-3xl"></div>
-            <div class="relative rounded-[32px] border border-white/10 bg-black/60 px-8 py-10 text-center">
-              <div class="mx-auto h-56 w-56 rounded-[32px] bg-gradient-to-br from-black via-neutral-900 to-neutral-700 flex items-center justify-center">
-                <div class="h-40 w-40 rounded-full border border-dashed border-white/20 flex flex-col items-center justify-center gap-2">
-                  <span class="text-sm text-neutral-400">UI Preview</span>
-                  <span class="text-2xl font-semibold">RU</span>
-                  <span class="text-xs text-neutral-500">Crafted pixels</span>
-                </div>
-              </div>
-              <p class="mt-6 text-neutral-300 text-sm">
-                Energetic contrast, tactile depth, and frictionless flow — the core of each project.
-              </p>
-            </div>
+          <div class="flex items-center gap-4 text-sm text-white/60">
+            <span class="mono">upadhyayrudra1205@gmail.com</span>
           </div>
-        </section>
-
-        <section id="about" class="panel rounded-3xl px-8 py-10 grid gap-8 lg:grid-cols-2" data-animate>
-          <div>
-            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">About</p>
-            <h2 class="mt-3 text-3xl font-semibold">Crafting clarity through intentional systems</h2>
-            <p class="mt-4 text-neutral-300">
-              With 5+ years collaborating with product teams, I translate layered ideas into intuitive flows. My process is anchored in research, rapid prototyping, and motion principles that guide attention without overwhelming.
-            </p>
-          </div>
-          <div class="space-y-4 text-neutral-300">
-            <div class="card rounded-2xl px-6 py-5">
-              <p class="text-sm text-neutral-400">Focus</p>
-              <p class="mt-2 text-lg font-medium">Scalable design systems & multi-theme experiences</p>
-            </div>
-            <div class="card rounded-2xl px-6 py-5">
-              <p class="text-sm text-neutral-400">Toolbox</p>
-              <p class="mt-2">Figma, After Effects, ProtoPie, Framer, design tokens, accessibility audits.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="skills" class="panel rounded-3xl px-8 py-10 space-y-8" data-animate>
-          <div class="flex items-center justify-between flex-wrap gap-4">
-            <div>
-              <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Skills</p>
-              <h2 class="mt-2 text-3xl font-semibold">Core capabilities</h2>
-            </div>
-            <div class="text-sm text-neutral-400 mono">Inter · JetBrains Mono · Poppins · Fira Code · Space Grotesk</div>
-          </div>
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="card rounded-2xl px-6 py-5">
-              <div class="flex items-center justify-between text-sm">
-                <p>Design Systems</p>
-                <p class="text-neutral-400">92%</p>
-              </div>
-              <div class="mt-3 h-2 rounded-full bg-white/10">
-                <div class="h-full rounded-full bg-emerald-400" style="width:92%"></div>
-              </div>
-            </div>
-            <div class="card rounded-2xl px-6 py-5">
-              <div class="flex items-center justify-between text-sm">
-                <p>Interaction Design</p>
-                <p class="text-neutral-400">88%</p>
-              </div>
-              <div class="mt-3 h-2 rounded-full bg-white/10">
-                <div class="h-full rounded-full bg-sky-400" style="width:88%"></div>
-              </div>
-            </div>
-            <div class="card rounded-2xl px-6 py-5">
-              <div class="flex items-center justify-between text-sm">
-                <p>Prototyping</p>
-                <p class="text-neutral-400">85%</p>
-              </div>
-              <div class="mt-3 h-2 rounded-full bg-white/10">
-                <div class="h-full rounded-full bg-purple-400" style="width:85%"></div>
-              </div>
-            </div>
-            <div class="card rounded-2xl px-6 py-5">
-              <div class="flex items-center justify-between text-sm">
-                <p>Accessibility</p>
-                <p class="text-neutral-400">80%</p>
-              </div>
-              <div class="mt-3 h-2 rounded-full bg-white/10">
-                <div class="h-full rounded-full bg-amber-400" style="width:80%"></div>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-wrap gap-2 text-sm text-neutral-300">
-            <span class="card rounded-full px-4 py-2">UI Design</span>
-            <span class="card rounded-full px-4 py-2">Design Tokens</span>
-            <span class="card rounded-full px-4 py-2">Motion Systems</span>
-            <span class="card rounded-full px-4 py-2">Microcopy</span>
-            <span class="card rounded-full px-4 py-2">Multi-theme</span>
-            <span class="card rounded-full px-4 py-2">Research Synthesis</span>
-          </div>
-        </section>
-
-        <section id="projects" class="panel rounded-3xl px-8 py-10 space-y-6" data-animate>
-          <div class="flex items-center justify-between flex-wrap gap-4">
-            <div>
-              <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Projects</p>
-              <h2 class="mt-2 text-3xl font-semibold">Selected work</h2>
-            </div>
-            <a href="#contact" class="text-sm text-emerald-300 hover:text-emerald-200 transition">Request full case study →</a>
-          </div>
-          <div class="grid gap-6 md:grid-cols-3">
-            <article class="card rounded-3xl p-6 flex flex-col gap-4">
-              <div class="h-40 rounded-2xl bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 border border-white/10 flex items-center justify-center">
-                <span class="mono text-neutral-400">Dashboard OS</span>
-              </div>
-              <h3 class="text-xl font-semibold">Dark Mode Insights</h3>
-              <p class="text-sm text-neutral-400">Enterprise analytics suite with adaptive theming and live data cards.</p>
-              <div class="text-xs text-neutral-400">Role: Design Lead · 2024</div>
-            </article>
-            <article class="card rounded-3xl p-6 flex flex-col gap-4">
-              <div class="h-40 rounded-2xl bg-gradient-to-br from-sky-900 via-blue-900 to-indigo-800 border border-white/10 flex items-center justify-center">
-                <span class="mono text-neutral-200">NeoBank</span>
-              </div>
-              <h3 class="text-xl font-semibold">Fintech Motion Kit</h3>
-              <p class="text-sm text-neutral-400">Micro-interaction library improving conversion by 18%.</p>
-              <div class="text-xs text-neutral-400">Role: UI Designer · 2023</div>
-            </article>
-            <article class="card rounded-3xl p-6 flex flex-col gap-4">
-              <div class="h-40 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-700 border border-white/10 flex items-center justify-center">
-                <span class="mono text-neutral-200">HealthFlow</span>
-              </div>
-              <h3 class="text-xl font-semibold">Care Navigation</h3>
-              <p class="text-sm text-neutral-400">Patient-first scheduling platform with contextual guidance.</p>
-              <div class="text-xs text-neutral-400">Role: Product Designer · 2022</div>
-            </article>
-          </div>
-        </section>
-
-        <section id="experience" class="panel rounded-3xl px-8 py-10 space-y-8" data-animate>
-          <div>
-            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Experience</p>
-            <h2 class="mt-2 text-3xl font-semibold">Recent roles</h2>
-          </div>
-          <div class="space-y-6">
-            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        </div>
+        <div class="relative flex justify-center">
+          <div class="w-72 h-72 md:w-80 md:h-80 rounded-3xl bg-gradient-to-br from-white/15 via-white/5 to-white/0 border border-white/10 shadow-xl tilt overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.3),transparent_50%)]"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-center px-6">
               <div>
-                <p class="text-lg font-medium">Lead UI Designer · Pixel North</p>
-                <p class="text-sm text-neutral-400">2022 — Present</p>
+                <div class="w-20 h-20 rounded-full bg-white/10 mx-auto mb-4 border border-white/15"></div>
+                <p class="text-lg font-semibold grotesk">Rudra Upadhyay</p>
+                <p class="text-white/60 text-sm">Beginner Frontend Developer</p>
               </div>
-              <p class="text-sm text-neutral-300">Built end-to-end design system powering finance + media suites.</p>
-            </div>
-            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <p class="text-lg font-medium">Product Designer · Lumen Labs</p>
-                <p class="text-sm text-neutral-400">2020 — 2022</p>
-              </div>
-              <p class="text-sm text-neutral-300">Shipped mobile-first experiences for 4M+ users with motion-first storytelling.</p>
-            </div>
-            <div class="card rounded-3xl px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <p class="text-lg font-medium">UI Designer · Freelance</p>
-                <p class="text-sm text-neutral-400">2018 — 2020</p>
-              </div>
-              <p class="text-sm text-neutral-300">Partnered with startups to craft MVPs, style guides, and marketing sites.</p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="contact" class="panel rounded-3xl px-8 py-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]" data-animate>
-          <div class="space-y-4">
-            <p class="text-sm uppercase tracking-[0.4em] text-neutral-400">Contact</p>
-            <h2 class="text-3xl font-semibold">Let's co-create bold, useful systems</h2>
-            <p class="text-neutral-300">
-              Drop a line for collaborations, design critiques, or speaking gigs. I usually respond within a day.
-            </p>
-            <div class="flex flex-wrap gap-4 text-sm">
-              <button id="copyEmailContact" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:border-white/60 transition">
-                Copy email
-              </button>
-              <a href="mailto:upadhyayrudra1205@gmail.com" class="inline-flex items-center gap-2 rounded-full bg-emerald-400/90 px-5 py-3 text-black font-semibold hover:bg-emerald-300 transition">
-                Start email
-              </a>
-            </div>
-            <p class="text-sm text-neutral-400 mono">Email: <span id="emailText">upadhyayrudra1205@gmail.com</span></p>
+      <!-- About -->
+      <section id="about" class="grid md:grid-cols-2 gap-8 items-start fade-section">
+        <div class="glass rounded-2xl p-6 shadow-lg card-hover transition">
+          <h2 class="text-2xl grotesk font-semibold mb-3">About me</h2>
+          <p class="text-white/70 leading-relaxed">I'm Rudra, a curious builder learning the craft of the web. I love mixing minimal layouts with subtle animations and readable typography. My goal is to keep improving, ship small projects, and learn from every experiment.</p>
+        </div>
+        <div class="space-y-4">
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h3 class="text-lg grotesk font-semibold">What I'm focusing on</h3>
+            <ul class="list-disc list-inside text-white/70 text-sm leading-relaxed">
+              <li>Responsive layouts with modern CSS</li>
+              <li>Interactive components with JavaScript</li>
+              <li>Clean typography using Inter & Space Grotesk</li>
+              <li>Accessible, friendly UI patterns</li>
+            </ul>
           </div>
-          <form class="card rounded-3xl px-6 py-6 space-y-4">
-            <div>
-              <label class="text-sm text-neutral-400" for="name">Name</label>
-              <input id="name" type="text" placeholder="Your name" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" />
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h3 class="text-lg grotesk font-semibold">Tools & Habits</h3>
+            <p class="text-white/70 text-sm leading-relaxed">Tailwind play, VS Code with Fira Code, version control basics, and a lot of trial-and-error paired with curiosity.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="fade-section">
+        <div class="glass rounded-2xl p-6 shadow-lg mb-6 card-hover transition">
+          <h2 class="text-2xl grotesk font-semibold mb-2">Skills</h2>
+          <p class="text-white/70 text-sm">A snapshot of things I'm practicing and enjoying.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Frontend</h4>
+            <p class="text-white/70 text-sm">HTML5, CSS3, Tailwind, basic JavaScript</p>
+          </div>
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Design</h4>
+            <p class="text-white/70 text-sm">Wireframes, layout experiments, picking cohesive fonts</p>
+          </div>
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Workflow</h4>
+            <p class="text-white/70 text-sm">Git basics, live previews, note-taking and iteration</p>
+          </div>
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Learning</h4>
+            <p class="text-white/70 text-sm">Accessibility, better animations, component patterns</p>
+          </div>
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Soft skills</h4>
+            <p class="text-white/70 text-sm">Curiosity, consistency, communication</p>
+          </div>
+          <div class="glass rounded-2xl p-5 shadow-lg card-hover transition">
+            <h4 class="grotesk font-semibold mb-2">Hobbies</h4>
+            <p class="text-white/70 text-sm">Exploring new UIs, reading docs, mini side projects</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="fade-section">
+        <div class="glass rounded-2xl p-6 shadow-lg card-hover transition">
+          <h2 class="text-2xl grotesk font-semibold mb-3">Get in touch</h2>
+          <p class="text-white/70 text-sm mb-4">Have feedback or want to say hi? Drop a message.</p>
+          <form class="grid gap-4">
+            <div class="grid gap-2">
+              <label class="text-sm text-white/80">Name</label>
+              <input class="bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-white/60" placeholder="Your name" />
             </div>
-            <div>
-              <label class="text-sm text-neutral-400" for="email">Email</label>
-              <input id="email" type="email" placeholder="you@example.com" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" />
+            <div class="grid gap-2">
+              <label class="text-sm text-white/80">Email</label>
+              <input class="bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-white/60" placeholder="you@example.com" />
             </div>
-            <div>
-              <label class="text-sm text-neutral-400" for="message">Message</label>
-              <textarea id="message" placeholder="Tell me about your project" class="mt-1 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-emerald-400 focus:outline-none" rows="4"></textarea>
+            <div class="grid gap-2">
+              <label class="text-sm text-white/80">Message</label>
+              <textarea rows="4" class="bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-white/60" placeholder="Say hello..."></textarea>
             </div>
-            <button type="button" class="w-full rounded-full bg-white text-black py-3 font-semibold hover:-translate-y-0.5 transition">
-              Send message
-            </button>
+            <button type="button" class="justify-self-start px-5 py-3 rounded-xl bg-white text-black text-sm font-semibold hover:translate-y-[-2px] transition shadow-lg">Send</button>
           </form>
-        </section>
-      </main>
+          <div class="mt-4 text-sm text-white/70">or email: <span class="mono">upadhyayrudra1205@gmail.com</span></div>
+        </div>
+      </section>
 
-      <footer class="mt-10 panel rounded-3xl px-6 py-4 flex flex-wrap items-center justify-between text-sm text-neutral-400" data-animate>
-        <span>© <span id="year"></span> Rudra Upadhyay · UI Designer</span>
-        <span class="mono">Made with clarity & motion</span>
+      <!-- Footer -->
+      <footer class="glass rounded-2xl p-5 text-sm text-white/70 shadow-lg fade-section">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <span>© 2024 Rudra Upadhyay. Built with curiosity.</span>
+          <div class="flex items-center gap-3">
+            <a class="hover:text-white" href="#hero">Top</a>
+            <span class="w-1 h-1 rounded-full bg-white/30"></span>
+            <a class="hover:text-white" href="mailto:upadhyayrudra1205@gmail.com">Email</a>
+          </div>
+        </div>
       </footer>
     </div>
   </div>
 
   <script>
-    (function () {
-      const email = 'upadhyayrudra1205@gmail.com';
-      const copyButtons = [
-        document.getElementById('copyEmailHero'),
-        document.getElementById('copyEmailContact')
-      ];
-      const emailText = document.getElementById('emailText');
-      const yearSpan = document.getElementById('year');
-      const body = document.body;
-      const themeToggle = document.getElementById('themeToggle');
+    // Load fonts
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&family=Fira+Code:wght@400;600&family=Space+Grotesk:wght@500;600&display=swap';
+    document.head.appendChild(link);
 
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+    // Theme toggle
+    const page = document.getElementById('page');
+    const toggle = document.getElementById('themeToggle');
+    let light = false;
+    toggle.addEventListener('click', () => {
+      light = !light;
+      if (light) {
+        page.classList.add('bg-white', 'text-black');
+        page.classList.remove('text-white');
+        document.documentElement.style.setProperty('--grad', 'linear-gradient(135deg, #f5f5f5 0%, #e9e9e9 40%, #0a0a0a 100%)');
+      } else {
+        page.classList.remove('bg-white', 'text-black');
+        page.classList.add('text-white');
+        document.documentElement.style.setProperty('--grad', 'linear-gradient(135deg, #050505 0%, #0c0c0c 30%, #f5f5f5 100%)');
       }
+    });
 
-      const setTheme = (mode) => {
-        body.setAttribute('data-theme', mode);
-        localStorage.setItem('theme-mode', mode);
-        if (themeToggle) {
-          themeToggle.querySelector('span').textContent = mode === 'dark' ? 'Dark' : 'Light';
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
         }
-      };
-
-      const storedTheme = localStorage.getItem('theme-mode');
-      if (storedTheme) {
-        setTheme(storedTheme);
-      }
-
-      if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-          const current = body.getAttribute('data-theme');
-          setTheme(current === 'dark' ? 'light' : 'dark');
-        });
-      }
-
-      copyButtons.forEach((button) => {
-        if (!button) return;
-        button.addEventListener('click', async () => {
-          try {
-            await navigator.clipboard.writeText(email);
-            const original = button.textContent;
-            button.textContent = 'Email copied!';
-            button.classList.add('bg-emerald-400', 'text-black');
-            setTimeout(() => {
-              button.textContent = original;
-              button.classList.remove('bg-emerald-400', 'text-black');
-            }, 1800);
-          } catch (err) {
-            console.error('Clipboard not available:', err);
-            if (emailText) {
-              emailText.textContent = email + ' (copy manually)';
-            }
-            alert('Email: ' + email);
-          }
-        });
       });
+    }, { threshold: 0.15 });
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
-    })();
+    document.querySelectorAll('.fade-section').forEach(section => observer.observe(section));
   </script>
 </body>
 </html>
