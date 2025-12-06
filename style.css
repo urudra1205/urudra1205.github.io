@@ -16,6 +16,134 @@
 html {
     scroll-behavior: smooth;
 }
+.bubbles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 198, 167, 0.1);
+    border: 1px solid rgba(0, 198, 167, 0.2);
+    border-radius: 50%;
+    animation: float 15s infinite;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 198, 167, 0.1),
+        0 0 20px rgba(0, 198, 167, 0.05);
+}
+
+.bubble:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    animation-duration: 20s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    left: 20%;
+    animation-duration: 25s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    animation-duration: 22s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(5) {
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(6) {
+    width: 90px;
+    height: 90px;
+    left: 75%;
+    animation-duration: 24s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(7) {
+    width: 40px;
+    height: 40px;
+    left: 80%;
+    animation-duration: 19s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(8) {
+    width: 120px;
+    height: 120px;
+    left: 90%;
+    animation-duration: 26s;
+    animation-delay: 5s;
+}
+
+.bubble:nth-child(9) {
+    width: 55px;
+    height: 55px;
+    left: 25%;
+    animation-duration: 21s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(10) {
+    width: 75px;
+    height: 75px;
+    left: 45%;
+    animation-duration: 23s;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0% {
+        bottom: -100px;
+        transform: translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(100px);
+    }
+    75% {
+        opacity: 0.4;
+        transform: translateX(-50px);
+    }
+    100% {
+        bottom: 110vh;
+        transform: translateX(150px);
+        opacity: 0;
+    }
+}
 
 header, main, footer {
     position: relative;
@@ -399,80 +527,3 @@ footer {
     }
 }
 
-
-/* ===== Floating Bubbles Animation ===== */
-.bubbles-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.bubble {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(0, 198, 167, 0.1);
-    animation: floatUp linear infinite;
-    pointer-events: none;
-}
-
-/* Bubble size variations */
-.bubble.small {
-    width: 20px;
-    height: 20px;
-}
-
-.bubble.medium {
-    width: 40px;
-    height: 40px;
-}
-
-.bubble.large {
-    width: 60px;
-    height: 60px;
-}
-
-/* Bubble color variations */
-.bubble.color1 {
-    background: rgba(0, 198, 167, 0.15);
-    box-shadow: 0 0 20px rgba(0, 198, 167, 0.3);
-}
-
-.bubble.color2 {
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-
-.bubble.color3 {
-    background: rgba(224, 224, 224, 0.08);
-    box-shadow: 0 0 10px rgba(224, 224, 224, 0.15);
-}
-
-/* Floating animation */
-@keyframes floatUp {
-    0% {
-        transform: translateY(100vh) translateX(0) scale(0.5);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.3;
-    }
-    90% {
-        opacity: 0.2;
-    }
-    100% {
-        transform: translateY(-100px) translateX(100px) scale(1);
-        opacity: 0;
-    }
-}
-
-/* Different animation durations for variety */
-.bubble.duration1 { animation-duration: 20s; }
-.bubble.duration2 { animation-duration: 25s; }
-.bubble.duration3 { animation-duration: 30s; }
-.bubble.duration4 { animation-duration: 35s; }
-.bubble.duration5 { animation-duration: 40s; }
