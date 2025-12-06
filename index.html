@@ -10,183 +10,769 @@
         margin:0;
         padding:0;
         box-sizing:border-box;
-        font-family: "Courier New", monospace;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         scroll-behavior:smooth;
     }
 
     :root{
-        --text:white;
-        --bg:#000;
+        --text:#ffffff;
+        --bg:#0a0a0a;
         --accent:#00bcd4;
+        --accent-hover:#00e5ff;
+        --card-bg:rgba(255,255,255,0.05);
     }
 
     body{
-        background:linear-gradient(140deg,#000,#222,#444);
+        background:var(--bg);
         color:var(--text);
+        overflow-x:hidden;
     }
 
+    /* Animated Background */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(140deg,#000,#1a1a2e,#16213e);
+        z-index: -1;
+        animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+
+    /* Navigation */
     nav{
         position:fixed;
         top:0;
         width:100%;
-        background:rgba(0,0,0,0.7);
-        backdrop-filter:blur(10px);
-        padding:15px;
+        background:rgba(0,0,0,0.85);
+        backdrop-filter:blur(15px);
+        padding:15px 30px;
         display:flex;
-        justify-content:center;
-        gap:40px;
+        justify-content:space-between;
+        align-items:center;
         z-index:999;
+        box-shadow:0 2px 20px rgba(0,188,212,0.1);
+        transition: all 0.3s ease;
     }
-    nav a{
+
+    nav.scrolled {
+        padding: 10px 30px;
+        box-shadow:0 2px 30px rgba(0,188,212,0.3);
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .nav-links{
+        display:flex;
+        gap:40px;
+        list-style:none;
+    }
+
+    .nav-links a{
         text-decoration:none;
         color:white;
-        font-size:1.2rem;
+        font-size:1rem;
         transition:0.3s;
+        position: relative;
+        padding: 5px 0;
     }
-    nav a:hover{
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-links a:hover{
         color:var(--accent);
     }
 
+    /* Hamburger Menu */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background: var(--accent);
+        transition: 0.3s;
+        border-radius: 3px;
+    }
+
+    /* Sections */
     .section{
         padding:120px 30px 70px;
         text-align:center;
-        max-width:1000px;
+        max-width:1200px;
         margin:auto;
-    }
-    h1,h2{
-        margin-bottom:20px;
-        font-size:2rem;
-        text-transform:uppercase;
-    }
-    p{
-        font-size:1.2rem;
-        line-height:1.6;
-        margin-bottom:30px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s ease forwards;
     }
 
-    .skills,.projects{
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+
+    h1,h2{
+        margin-bottom:20px;
+        font-size:2.5rem;
+        text-transform:uppercase;
+        background: linear-gradient(135deg, #fff, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.8; }
+    }
+
+    p{
+        font-size:1.2rem;
+        line-height:1.8;
+        margin-bottom:30px;
+        color: rgba(255,255,255,0.9);
+    }
+
+    /* Hero Section */
+    #home {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #home h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: typing 2s steps(20), blink 0.5s step-end infinite alternate;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid var(--accent);
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* Skills Section */
+    .skills{
         display:flex;
         flex-wrap:wrap;
         justify-content:center;
         gap:20px;
-        margin-top:30px;
+        margin-top:40px;
     }
 
     .skill-box{
-        border:2px solid white;
-        padding:15px 25px;
-        border-radius:10px;
-        font-size:1.5rem;
-        transition:0.3s;
+        background:var(--card-bg);
+        border:2px solid rgba(255,255,255,0.1);
+        padding:20px 35px;
+        border-radius:15px;
+        font-size:1.2rem;
+        transition:all 0.3s ease;
         cursor:pointer;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
     }
+
+    .skill-box::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: var(--accent);
+        transform: translate(-50%, -50%);
+        transition: width 0.5s, height 0.5s;
+        z-index: -1;
+    }
+
+    .skill-box:hover::before {
+        width: 300px;
+        height: 300px;
+    }
+
     .skill-box:hover{
-        transform:scale(1.1);
+        transform:translateY(-10px) scale(1.05);
         border-color:var(--accent);
-        color:var(--accent);
+        color:var(--bg);
+        font-weight: bold;
+        box-shadow: 0 10px 30px rgba(0,188,212,0.3);
+    }
+
+    /* Projects Section */
+    .projects{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+        gap:30px;
+        margin-top:40px;
+    }
+
+    .project-card {
+        background:var(--card-bg);
+        border:2px solid rgba(255,255,255,0.1);
+        border-radius:15px;
+        overflow:hidden;
+        transition:all 0.4s ease;
+        cursor:pointer;
+        backdrop-filter: blur(10px);
+    }
+
+    .project-card:hover {
+        transform: translateY(-15px) rotate(2deg);
+        box-shadow: 0 20px 40px rgba(0,188,212,0.4);
+        border-color: var(--accent);
     }
 
     img.project{
-        width:350px;
-        max-width:90%;
-        border-radius:10px;
-        border:2px solid white;
-        transition:.3s;
-    }
-    img.project:hover{
-        transform:scale(1.05);
-        border-color:var(--accent);
+        width:100%;
+        height:250px;
+        object-fit:cover;
+        transition: transform 0.4s ease;
     }
 
+    .project-card:hover img.project {
+        transform: scale(1.1);
+    }
+
+    .project-info {
+        padding: 20px;
+        text-align: left;
+    }
+
+    .project-info h3 {
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+
+    /* Email Button */
+    .email-btn {
+        display: inline-block;
+        padding: 18px 45px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+        color: var(--bg);
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 20px rgba(0,188,212,0.4);
+        position: relative;
+        overflow: hidden;
+        margin: 20px 0;
+    }
+
+    .email-btn::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+
+    .email-btn:hover::before {
+        width: 400px;
+        height: 400px;
+    }
+
+    .email-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 40px rgba(0,188,212,0.6);
+    }
+
+    .email-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Contact Section */
+    .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .contact-card {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 15px;
+        border: 2px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        min-width: 250px;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent);
+        box-shadow: 0 10px 30px rgba(0,188,212,0.3);
+    }
+
+    .contact-card h3 {
+        color: var(--accent);
+        margin-bottom: 10px;
+    }
+
+    /* Footer */
     footer{
-        margin-top:50px;
+        margin-top:80px;
         text-align:center;
-        padding-bottom:40px;
-        font-size:1.3rem;
+        padding:30px;
+        font-size:1rem;
+        background:rgba(0,0,0,0.5);
+        border-top:1px solid rgba(255,255,255,0.1);
     }
 
-    .email{
-        color:var(--accent);
-        font-size:1.4rem;
+    /* Scroll to Top Button */
+    .scroll-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 998;
+        box-shadow: 0 5px 20px rgba(0,188,212,0.4);
+    }
+
+    .scroll-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .scroll-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,188,212,0.6);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            height: 100vh;
+            width: 70%;
+            background: rgba(0,0,0,0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-links.active {
+            right: 0;
+        }
+
+        .hamburger {
+            display: flex;
+            z-index: 1000;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        h1 {
+            font-size: 2rem !important;
+        }
+
+        #home h1 {
+            font-size: 1.8rem !important;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .skill-box {
+            padding: 15px 25px;
+            font-size: 1rem;
+        }
+
+        .projects {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-info {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5rem !important;
+        }
+
+        #home h1 {
+            font-size: 1.3rem !important;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+        }
+
+        .email-btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+        }
+    }
+
+    /* Loading Animation */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .loading {
+        animation: pulse 2s ease-in-out infinite;
     }
 </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="logo">RU</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 </nav>
 
+<!-- Hero Section -->
 <section class="section" id="home">
     <h1>LOOKING FOR A UI DESIGN?</h1>
     <p>How About I Can Help You?</p>
+    <a href="#contact" class="email-btn">
+        <span>📧 Get In Touch</span>
+    </a>
 </section>
 
+<!-- About Section -->
 <section class="section" id="about">
     <h1>I AM RUDRA UPADHYAY</h1>
-    <p>A passionate UI Designer crafting intuitive and beautiful digital experiences.</p>
+    <p>A passionate UI Designer crafting intuitive and beautiful digital experiences.<br>
+    Transforming ideas into stunning, user-friendly interfaces.</p>
 </section>
 
+<!-- Skills Section -->
 <section class="section" id="skills">
     <h2>Skills That I Can Boast About!</h2>
     <div class="skills">
-        <div class="skill-box">HTML</div>
-        <div class="skill-box">CSS</div>
-        <div class="skill-box">RUST</div>
-        <div class="skill-box">FIGMA</div>
+        <div class="skill-box">HTML5</div>
+        <div class="skill-box">CSS3</div>
+        <div class="skill-box">JavaScript</div>
+        <div class="skill-box">Figma</div>
+        <div class="skill-box">React</div>
+        <div class="skill-box">UI/UX</div>
     </div>
-
-    <p style="margin-top:30px;">And the most important one: <br>THE COURAGE TO HANDLE ERRORS.</p>
+    <p style="margin-top:40px; font-size:1.3rem; color:var(--accent);">
+        And the most important one: <br>THE COURAGE TO HANDLE ERRORS 💪
+    </p>
 </section>
 
+<!-- Projects Section -->
 <section class="section" id="projects">
     <h2>Projects That Costed Me My Sanity & Soul 😭</h2>
     <div class="projects">
-        <img src="project1.png" class="project" alt="Project 1">
-        <img src="project2.png" class="project" alt="Project 2">
-        <img src="project3.png" class="project" alt="Project 3">
+        <div class="project-card">
+            <img src="project1.png" class="project" alt="E-Commerce Platform">
+            <div class="project-info">
+                <h3>E-Commerce Platform</h3>
+                <p>Modern shopping experience with seamless checkout</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <img src="project2.png" class="project" alt="Dashboard Design">
+            <div class="project-info">
+                <h3>Analytics Dashboard</h3>
+                <p>Data visualization with interactive charts</p>
+            </div>
+        </div>
+        <div class="project-card">
+            <img src="project3.png" class="project" alt="Mobile App">
+            <div class="project-info">
+                <h3>Fitness Tracker App</h3>
+                <p>Health & wellness mobile interface</p>
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- Contact Section -->
 <section class="section" id="contact">
     <h2>Contact Me If You Like My Work</h2>
-    <p class="email">upadhyayrudra1205@gmail.com</p>
+    <p style="font-size:1.3rem;">Let's create something amazing together!</p>
+    
+    <a href="mailto:upadhyayrudra1205@gmail.com?subject=Hi Rudra! Let's work together&body=Hello Rudra, I found your portfolio and I'm interested in..." 
+       class="email-btn">
+        <span>✉️ Send Email</span>
+    </a>
+
+    <div class="contact-info">
+        <div class="contact-card">
+            <h3>📧 Email</h3>
+            <p>upadhyayrudra1205@gmail.com</p>
+        </div>
+        <div class="contact-card">
+            <h3>💼 LinkedIn</h3>
+            <p>Connect with me professionally</p>
+        </div>
+        <div class="contact-card">
+            <h3>🎨 Dribbble</h3>
+            <p>Check out my designs</p>
+        </div>
+    </div>
 </section>
 
+<!-- Footer -->
 <footer>
-    © 2025 Rudra Upadhyay — UI Designer
+    <p>© 2025 Rudra Upadhyay — UI Designer. All rights reserved.</p>
+    <p style="margin-top:10px; font-size:0.9rem;">Made with ❤️ and lots of ☕</p>
 </footer>
 
+<!-- Scroll to Top Button -->
+<button class="scroll-top" id="scrollTop">↑</button>
 
 <script>
-    // Smooth highlight navbar on scroll
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
 
-    window.addEventListener("scroll", () => {
-        let current = "";
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
 
-        sections.forEach(sec => {
-            let top = window.scrollY;
-            if(top >= sec.offsetTop - 150){
-                current = sec.getAttribute("id");
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('.section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 200) {
+                current = section.getAttribute('id');
             }
         });
 
-        navLinks.forEach(link=>{
-            link.classList.remove("active");
-            if(link.getAttribute("href") === `#${current}`){
-                link.style.color = "#00bcd4";
-            } else {
-                link.style.color = "white";
+        navItems.forEach(item => {
+            item.style.color = 'white';
+            if (item.getAttribute('href') === `#${current}`) {
+                item.style.color = 'var(--accent)';
             }
         });
     });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Add click animation to skill boxes
+    document.querySelectorAll('.skill-box').forEach(box => {
+        box.addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 10);
+        });
+    });
+
+    // Project card tilt effect
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `translateY(-15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+
+    // Email button click animation
+    document.querySelectorAll('.email-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255,255,255,0.5)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s ease-out';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
 </script>
 
 </body>
