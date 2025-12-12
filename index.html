@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rudra Upadhyay | UI Designer</title>
     
-    <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header & Navigation -->
+<div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+</div>
+
     <header>
         <nav>
             <a href="#hero" class="logo">Rudra U.</a>
@@ -36,7 +45,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section id="hero">
             <div class="hero-content">
                 <h1 class="fade-in">Hi, I'm Rudra Upadhyay</h1>
@@ -45,13 +53,11 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="scroll-animate">
             <div class="container">
                 <h2>About Me</h2>
                 <div class="about-content">
                     <div class="about-image">
-                        <!-- IMPORTANT: Replace with your photo -->
                         <img src="images/profile.jpg" alt="Rudra Upadhyay">
                     </div>
                     <div class="about-text">
@@ -64,7 +70,6 @@
                         <h3>My Skills</h3>
                         <div class="skills">
                             <span>Figma</span>
-                            <span>Adobe XD</span>
                             <span>Sketch</span>
                             <span>Prototyping</span>
                             <span>User Research</span>
@@ -76,68 +81,61 @@
             </div>
         </section>
 
-        <!-- Portfolio Section -->
         <section id="portfolio" class="scroll-animate">
             <div class="container">
                 <h2>My Portfolio</h2>
                 <div class="portfolio-grid">
                     
-                    <!-- Portfolio Item 1 -->
                     <div class="portfolio-item">
-                        <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project1.jpg" alt="Project 1">
+                        <img src="Images/Frame 1 (1).png" alt="Project 1">
                         <div class="portfolio-overlay">
-                            <h3>Project Title 1</h3>
-                            <p>Mobile App Design</p>
-                            <a href="#" class="view-project-btn">View Project</a>
+                            <h3>HomePage</h3>
                         </div>
                     </div>
                     
-                    <!-- Portfolio Item 2 -->
                     <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project2.jpg" alt="Project 2">
+                        <img src="Images/Frame 2.png" alt="Project 2">
                         <div class="portfolio-overlay">
-                            <h3>Project Title 2</h3>
-                            <p>Website Redesign</p>
-                            <a href="#" class="view-project-btn">View Project</a>
+                            <h3>Login Page</h3>
                         </div>
                     </div>
 
-                    <!-- Portfolio Item 3 -->
                     <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project3.jpg" alt="Project 3">
+                        <img src="Images/Frame 3.png" alt="Project 3">
                         <div class="portfolio-overlay">
-                            <h3>Project Title 3</h3>
-                            <p>Dashboard UI</p>
-                             <a href="#" class="view-project-btn">View Project</a>
+                            <h3>Register Page</h3>
                         </div>
                     </div>
 
-                    <!-- Portfolio Item 4 -->
-                    <div class="portfolio-item">
-                         <!-- IMPORTANT: Replace with your project image -->
-                        <img src="images/project4.jpg" alt="Project 4">
-                        <div class="portfolio-overlay">
-                            <h3>Project Title 4</h3>
-                            <p>E-commerce Experience</p>
-                             <a href="#" class="view-project-btn">View Project</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more portfolio items as needed -->
 
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="scroll-animate">
             <div class="container">
                 <h2>Get In Touch</h2>
                 <p>I'm currently available for freelance work and open to new opportunities. If you have a project in mind or just want to say hello, feel free to reach out!</p>
-                <a href="mailto:upadhyayrudra1205@gmail.com" class="email-link">upadhyayrudra1205@gmail.com</a>
+        
+        <div class="contact-form">
+            <form
+                action="https://formspree.io/f/mnnezywr" method="POST">
+                <label>
+                Your email:
+                <input type="email" name="email">
+                </label>
+                <label>
+                    Subject:
+                    <input name="subject">
+                </label>
+                <label>
+                    Your message:
+                    <textarea name="message"></textarea>
+                </label>
+                <!-- your other form fields go here -->
+                <button type="submit">Send</button>
+                </form>
+            </div>
                 <div class="social-links">
                     <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="#" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
@@ -147,12 +145,10 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Rudra Upadhyay. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript File -->
     <script src="script.js"></script>
 </body>
 </html>
