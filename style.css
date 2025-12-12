@@ -1,6 +1,5 @@
-/* --- Global Styles & Variables --- */
 :root {
-    --primary-color: #00c6a7; /* A vibrant teal */
+    --primary-color: #00c6a7; 
     --bg-color: #121212;
     --surface-color: #1e1e1e;
     --text-color: #e0e0e0;
@@ -17,7 +16,144 @@
 html {
     scroll-behavior: smooth;
 }
+.bubbles-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
 
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 198, 167, 0.1);
+    border: 1px solid rgba(0, 198, 167, 0.2);
+    border-radius: 50%;
+    animation: float 15s infinite;
+    box-shadow: 
+        inset 0 0 10px rgba(0, 198, 167, 0.1),
+        0 0 20px rgba(0, 198, 167, 0.05);
+}
+
+.bubble:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    animation-duration: 20s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    left: 20%;
+    animation-duration: 25s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    animation-duration: 22s;
+    animation-delay: 0s;
+}
+
+.bubble:nth-child(5) {
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 20s;
+    animation-delay: 3s;
+}
+
+.bubble:nth-child(6) {
+    width: 90px;
+    height: 90px;
+    left: 75%;
+    animation-duration: 24s;
+    animation-delay: 2s;
+}
+
+.bubble:nth-child(7) {
+    width: 40px;
+    height: 40px;
+    left: 80%;
+    animation-duration: 19s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(8) {
+    width: 120px;
+    height: 120px;
+    left: 90%;
+    animation-duration: 26s;
+    animation-delay: 5s;
+}
+
+.bubble:nth-child(9) {
+    width: 55px;
+    height: 55px;
+    left: 25%;
+    animation-duration: 21s;
+    animation-delay: 1s;
+}
+
+.bubble:nth-child(10) {
+    width: 75px;
+    height: 75px;
+    left: 45%;
+    animation-duration: 23s;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0% {
+        bottom: -100px;
+        transform: translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(100px);
+    }
+    75% {
+        opacity: 0.4;
+        transform: translateX(-50px);
+    }
+    100% {
+        bottom: 110vh;
+        transform: translateX(150px);
+        opacity: 0;
+    }
+}
+
+header, main, footer {
+    position: relative;
+    z-index: 10;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-color);
@@ -54,7 +190,6 @@ section {
     padding: 6rem 0;
 }
 
-/* --- Header & Navigation --- */
 header {
     position: fixed;
     width: 100%;
@@ -126,7 +261,6 @@ nav {
 }
 
 
-/* --- Hero Section --- */
 #hero {
     height: 100vh;
     display: flex;
@@ -160,7 +294,6 @@ nav {
     color: var(--bg-color);
 }
 
-/* --- About Section --- */
 .about-content {
     display: flex;
     align-items: center;
@@ -197,7 +330,6 @@ nav {
     font-size: 0.9rem;
 }
 
-/* --- Portfolio Section --- */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -258,39 +390,92 @@ nav {
 }
 
 
-/* --- Contact Section --- */
-#contact {
-    text-align: center;
-    background-color: var(--surface-color);
+.contact-form {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.15); /* Transparent glass effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  font-family: Arial, sans-serif;
+  animation: fadeIn 0.7s ease-out forwards;
+  transform: translateY(20px);
+  opacity: 0;
 }
 
-#contact p {
-    max-width: 600px;
-    margin: 0 auto 2rem;
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.email-link {
-    font-size: 1.5rem;
-    font-weight: 600;
-    display: inline-block;
-    margin-bottom: 2.5rem;
-    position: relative;
+.contact-form label {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.email-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-color);
-    bottom: -5px;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  color: black;
 }
-.email-link:hover::after {
-    transform: scaleX(1);
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 0 10px rgba(0, 198, 167, 0.6);
+  transform: translateY(-2px);
+}
+
+.contact-form textarea {
+  height: 130px;
+  resize: none;
+}
+
+.contact-form button {
+  background: black;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.04);
+  background: rgba(97, 85, 85, 0.85);
+}
+
+.contact-form button:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn { 
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-links a {
@@ -300,12 +485,12 @@ nav {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+
 .social-links a:hover {
     color: var(--primary-color);
     transform: translateY(-5px);
 }
 
-/* --- Footer --- */
 footer {
     text-align: center;
     padding: 2rem;
@@ -314,7 +499,6 @@ footer {
     color: var(--subtle-text-color);
 }
 
-/* --- Scroll Animations --- */
 .scroll-animate {
     opacity: 0;
     transform: translateY(50px);
@@ -340,7 +524,6 @@ footer {
 }
 
 
-/* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
@@ -368,7 +551,7 @@ footer {
     
     .hamburger {
         display: block;
-        z-index: 101; /* Above the nav links */
+        z-index: 101;
     }
 
     .hamburger.toggle .line:nth-child(1) {
