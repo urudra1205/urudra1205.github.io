@@ -350,16 +350,17 @@ select.form-input option {
     <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12"
       style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);">
       <div class="max-w-7xl mx-auto flex items-center justify-between"><!-- Logo --><a href="#"
-  class="flex items-center gap-3"
-  onclick="navigateTo('home'); return false;">
+   class="relative inline-flex items-center"
+   onclick="navigateTo('home'); return false;">
 
   <img src="ox png.png"
        alt="OXSHOTIT Logo"
-       class="h-8 md:h-10 object-contain">
+       class="h-8 md:h-10 absolute -left-6">
 
   <span class="font-bebas text-2xl md:text-3xl tracking-widest">
     OXSHOTIT
   </span>
+</a>
 </a> <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-8">
           <a href="#" class="nav-link font-mono text-xs tracking-wider active" data-page="home"
