@@ -759,67 +759,108 @@
       </div>
       </div>
     </section><!-- CONTACT PAGE -->
-    <section id="page-contact" class="page">
-      <div class="pt-32 pb-20 px-6 md:px-12">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-16">
+<section id="page-contact" class="page">
+  <div class="pt-32 pb-20 px-6 md:px-12">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="text-center mb-16">
         <p class="font-mono text-xs tracking-widest mb-4" style="color: var(--accent-red);">GET IN TOUCH</p>
-        <h1 class="font-display text-4xl md:text-6xl mb-6" style="color: var(--text-primary);">Let's create <span class="italic">together</span></h1>
-        <p class="font-mono text-sm max-w-lg mx-auto" style="color: rgba(245, 245, 245, 0.6);">Have a project in mind? I'd love to hear about it. Fill out the form below or reach out directly.</p>
-        </div>
-        <div class="grid lg:grid-cols-2 gap-12"><!-- Contact Form -->
+        <h1 class="font-display text-4xl md:text-6xl mb-6" style="color: var(--text-primary);">
+          Let's create <span class="italic">together</span>
+        </h1>
+        <p class="font-mono text-sm max-w-lg mx-auto" style="color: rgba(245, 245, 245, 0.6);">
+          Have a project in mind? I'd love to hear about it. Fill out the form below or reach out directly.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+
+        <!-- Contact Form -->
         <div class="vintage-border p-8" style="background: var(--bg-secondary);">
-          <form id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="space-y-6">
-            <div><label for="name" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">NAME</label> <input type="text" id="name" name="name" required class="form-input w-full font-mono text-sm" placeholder="Your name">
+
+          <form id="contactForm"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST">
+
+            <div class="space-y-6">
+
+              <div>
+                <label for="name" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">NAME</label>
+                <input type="text" id="name" name="name" required
+                  class="form-input w-full font-mono text-sm"
+                  placeholder="Your name">
+              </div>
+
+              <div>
+                <label for="email" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">EMAIL</label>
+                <input type="email" id="email" name="email" required
+                  class="form-input w-full font-mono text-sm"
+                  placeholder="your@email.com">
+              </div>
+
+              <div>
+                <label for="project" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">PROJECT TYPE</label>
+                <select id="project" name="project" class="form-input w-full font-mono text-sm">
+                  <option value="">Select a service</option>
+                  <option value="photography">Photography</option>
+                  <option value="videography">Videography</option>
+                  <option value="wedding">Wedding Coverage</option>
+                  <option value="content">Content Creation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="budget" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">BUDGET RANGE</label>
+                <select id="budget" name="budget" class="form-input w-full font-mono text-sm">
+                  <option value="">Select budget</option>
+                  <option value="15-25">₹15,000 - ₹25,000</option>
+                  <option value="25-50">₹25,000 - ₹50,000</option>
+                  <option value="50-100">₹50,000 - ₹1,00,000</option>
+                  <option value="100+">₹1,00,000+</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">MESSAGE</label>
+                <textarea id="message" name="message" rows="4" required
+                  class="form-input w-full font-mono text-sm resize-none"
+                  placeholder="Tell me about your project..."></textarea>
+              </div>
+
+              <!-- Anti Spam -->
+              <input type="text" name="_gotcha" style="display:none">
+
+              <button type="submit"
+                class="w-full py-4 font-mono text-sm tracking-wider"
+                style="background: var(--accent-red); color: var(--text-primary);">
+                SEND MESSAGE
+              </button>
+
             </div>
-            <div><label for="email" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">EMAIL</label> <input type="email" id="email" name="email" required class="form-input w-full font-mono text-sm" placeholder="your@email.com">
-            </div>
-            <div><label for="project" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">PROJECT TYPE</label> <select id="project" name="project" class="form-input w-full font-mono text-sm"> <option value="">Select a service</option> <option value="photography">Photography</option> <option value="videography">Videography</option> <option value="wedding">Wedding Coverage</option> <option value="content">Content Creation</option> <option value="other">Other</option> </select>
-            </div>
-            <div><label for="budget" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">BUDGET RANGE</label> <select id="budget" name="budget" class="form-input w-full font-mono text-sm"> <option value="">Select budget</option> <option value="15-25">₹15,000 - ₹25,000</option> <option value="25-50">₹25,000 - ₹50,000</option> <option value="50-100">₹50,000 - ₹1,00,000</option> <option value="100+">₹1,00,000+</option> </select>
-            </div>
-            <div><label for="message" class="block font-mono text-xs tracking-wider mb-2" style="color: var(--text-primary);">MESSAGE</label> <textarea id="message" name="message" rows="4" required class="form-input w-full font-mono text-sm resize-none" placeholder="Tell me about your project..."></textarea>
-            </div><button type="submit" class="w-full py-4 font-mono text-sm tracking-wider" style="background: var(--accent-red); color: var(--text-primary);"> SEND MESSAGE </button>
-          </div>
           </form>
+
           <div id="formSuccess" class="hidden text-center py-12">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: var(--accent-red);">
-            <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-primary);"><polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+            <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background: var(--accent-red);">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-primary);">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="font-display text-2xl mb-2" style="color: var(--text-primary);">Message Sent!</h3>
+            <p class="font-mono text-sm" style="color: rgba(245, 245, 245, 0.6);">
+              I'll get back to you within 24-48 hours.
+            </p>
           </div>
-          <h3 class="font-display text-2xl mb-2" style="color: var(--text-primary);">Message Sent!</h3>
-          <p class="font-mono text-sm" style="color: rgba(245, 245, 245, 0.6);">I'll get back to you within 24-48 hours.</p>
-          </div>
-        </div><!-- Contact Info -->
-        <div class="space-y-8 lg:pt-8">
-          <div>
-          <p class="font-mono text-xs tracking-wider mb-2" style="color: var(--accent-red);">EMAIL</p>
-          <p id="contactEmail" class="font-display text-xl" style="color: var(--text-primary);">hello@oxshotit.com</p>
-          </div>
-          <div>
-          <p class="font-mono text-xs tracking-wider mb-2" style="color: var(--accent-red);">INSTAGRAM</p><a href="https://instagram.com/oxshotit" target="_blank" rel="noopener noreferrer" class="font-display text-xl" style="color: var(--text-primary);">@oxshotit</a>
-          </div>
-          <div>
-          <p class="font-mono text-xs tracking-wider mb-2" style="color: var(--accent-red);">LOCATION</p>
-          <p class="font-display text-xl" style="color: var(--text-primary);">USA</p>
-          <p class="font-mono text-xs mt-1" style="color: rgba(245, 245, 245, 0.6);">Available for travel worldwide</p>
-          </div>
-          <div class="pt-8 border-t" style="border-color: rgba(139, 30, 30, 0.3);">
-          <p class="font-mono text-xs tracking-wider mb-4" style="color: var(--accent-red);">FOLLOW THE JOURNEY</p>
-          <div class="flex gap-4"><a href="https://instagram.com/oxshotit" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center border" style="border-color: rgba(245, 245, 245, 0.2); color: var(--text-primary);">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"></rect> <circle cx="12" cy="12" r="4"></circle> <circle cx="18" cy="6" r="1"></circle>
-            </svg></a> <a href="https://youtube.com/@oxshotit" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center border" style="border-color: rgba(245, 245, 245, 0.2); color: var(--text-primary);">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path> <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-            </svg></a> <a href="https://twitter.com/oxshotit" target="_blank" rel="noopener noreferrer" class="w-12 h-12 flex items-center justify-center border" style="border-color: rgba(245, 245, 245, 0.2); color: var(--text-primary);">
-            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path> <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
-            </svg></a>
-          </div>
-          </div>
+
         </div>
-        </div>
+
+        <!-- Contact Info (UNCHANGED) -->
+        <!-- (Baaki ka right side code same rehne de) -->
+
       </div>
-      </div>
+    </div>
+  </div>
+</section>
     </section><!-- Footer -->
     <footer class="py-8 px-6 md:px-12 border-t" style="border-color: rgba(139, 30, 30, 0.3);">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -885,21 +926,38 @@
         track.style.transform = `translateX(-${carouselPosition * slideWidth}%)`;
       }
       
-      // Form handling
-      function handleSubmit(event) {
-        event.preventDefault();
-        const form = document.getElementById('contactForm');
-        const success = document.getElementById('formSuccess');
-        
-        form.classList.add('hidden');
-        success.classList.remove('hidden');
-        
-        setTimeout(() => {
-          form.reset();
-          form.classList.remove('hidden');
-          success.classList.add('hidden');
-        }, 3000);
-      }
+     // Formspree Integration
+document.getElementById("contactForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const success = document.getElementById("formSuccess");
+  const data = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.classList.add("hidden");
+      success.classList.remove("hidden");
+      form.reset();
+
+      setTimeout(() => {
+        form.classList.remove("hidden");
+        success.classList.add("hidden");
+      }, 4000);
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+});
       
       // Element SDK Integration
       if (window.elementSdk) {
