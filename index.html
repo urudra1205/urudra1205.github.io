@@ -347,53 +347,34 @@ select.form-input option {
 <body class="h-full overflow-auto"><!-- Grain overlay for vintage effect -->
   <div class="grain-overlay"></div><!-- Main container -->
   <div id="app" class="min-h-full w-full" style="background: var(--bg-primary);"><!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12"
-      style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);">
-      <div class="max-w-7xl mx-auto flex items-center justify-between"><!-- Logo -->
-        <a href="#"
-   class="relative inline-flex items-center pl-6"
-   onclick="navigateTo('home'); return false;">
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-8 md:px-12"
+     style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);">
 
-  <!-- Logo Icon -->
-  <img src="Untitled-1.png"
-       alt="OXSHOTIT Logo"
-       class="absolute left-0 top-1/2 -translate-y-1/2 h-32 object-contain">
-</a>
-</a> <!-- Desktop Nav -->
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#" class="nav-link font-mono text-xs tracking-wider active" data-page="home"
-            onclick="navigateTo('home'); return false;">HOME</a>
-          <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="about"
-            onclick="navigateTo('about'); return false;">ABOUT</a>
-          <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="services"
-            onclick="navigateTo('services'); return false;">SERVICES</a>
-          <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="bts"
-            onclick="navigateTo('bts'); return false;">BTS</a>
-          <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="contact"
-            onclick="navigateTo('contact'); return false;">CONTACT</a>
-        </div><!-- Mobile menu button --> <button id="mobileMenuBtn" class="md:hidden"
-          style="color: var(--text-primary);" onclick="toggleMobileMenu()">
-          <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg></button>
-      </div><!-- Mobile Menu -->
-      <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 py-6"
-        style="background: var(--bg-primary);">
-        <div class="flex flex-col items-center gap-6"><a href="#" class="font-mono text-sm tracking-wider"
-            style="color: var(--text-primary);" onclick="navigateTo('home'); toggleMobileMenu(); return false;">WORK</a>
-          <a href="#" class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('services'); toggleMobileMenu(); return false;">SERVICES</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('about'); toggleMobileMenu(); return false;">ABOUT</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('bts'); toggleMobileMenu(); return false;">BTS</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('contact'); toggleMobileMenu(); return false;">CONTACT</a>
-        </div>
-      </div>
-    </nav><!-- HOME PAGE -->
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+    <!-- LOGO -->
+    <a href="#" onclick="navigateTo('home'); return false;" class="-ml-16 block">
+      <img src="Untitled-1 - Edited.png"
+           alt="OXSHOTIT"
+           class="h-[32px] w-auto">
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" class="nav-link font-mono text-xs tracking-wider active"
+         onclick="navigateTo('home'); return false;">HOME</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider"
+         onclick="navigateTo('about'); return false;">ABOUT</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider"
+         onclick="navigateTo('services'); return false;">SERVICES</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider"
+         onclick="navigateTo('bts'); return false;">BTS</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider"
+         onclick="navigateTo('contact'); return false;">CONTACT</a>
+    </div>
+
+  </div>
+</nav><!-- HOME PAGE -->
     <section id="page-home" class="page active"><!-- Hero Section -->
       <div class="pt-32 pb-16 px-6 md:px-12">
         <div class="max-w-7xl mx-auto">
