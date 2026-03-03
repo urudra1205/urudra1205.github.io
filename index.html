@@ -333,8 +333,13 @@
   <div id="app" class="min-h-full w-full" style="background: var(--bg-primary);"><!-- Navigation -->
    <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 md:px-12" style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);">
     <div class="max-w-7xl mx-auto flex items-center justify-between"><!-- Logo --> <a href="#" class="logo-text font-bebas text-2xl md:text-3xl tracking-widest" style="color: var(--text-primary);" onclick="navigateTo('home'); return false;"> OXSHOTIT </a> <!-- Desktop Nav -->
-     <div class="hidden md:flex items-center gap-8"><a href="#" class="nav-link font-mono text-xs tracking-wider active" style="color: var(--text-primary);" data-page="home" onclick="navigateTo('home'); return false;">WORK</a> <a href="#" class="nav-link font-mono text-xs tracking-wider" style="color: var(--text-primary);" data-page="services" onclick="navigateTo('services'); return false;">SERVICES</a> <a href="#" class="nav-link font-mono text-xs tracking-wider" style="color: var(--text-primary);" data-page="about" onclick="navigateTo('about'); return false;">ABOUT</a> <a href="#" class="nav-link font-mono text-xs tracking-wider" style="color: var(--text-primary);" data-page="bts" onclick="navigateTo('bts'); return false;">BTS</a> <a href="#" class="nav-link font-mono text-xs tracking-wider" style="color: var(--text-primary);" data-page="contact" onclick="navigateTo('contact'); return false;">CONTACT</a>
-     </div><!-- Mobile menu button --> <button id="mobileMenuBtn" class="md:hidden" style="color: var(--text-primary);" onclick="toggleMobileMenu()">
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" class="nav-link font-mono text-xs tracking-wider active" data-page="home" onclick="navigateTo('home'); return false;">HOME</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="about" onclick="navigateTo('about'); return false;">ABOUT</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="services" onclick="navigateTo('services'); return false;">SERVICES</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="bts" onclick="navigateTo('bts'); return false;">BTS</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" data-page="contact" onclick="navigateTo('contact'); return false;">CONTACT</a>
+    </div><!-- Mobile menu button --> <button id="mobileMenuBtn" class="md:hidden" style="color: var(--text-primary);" onclick="toggleMobileMenu()">
       <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line> <line x1="3" y1="12" x2="21" y2="12"></line> <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg></button>
     </div><!-- Mobile Menu -->
