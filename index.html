@@ -347,7 +347,7 @@ select.form-input option {
 <body class="h-full overflow-auto"><!-- Grain overlay for vintage effect -->
   <div class="grain-overlay"></div><!-- Main container -->
   <div id="app" class="min-h-full w-full" style="background: var(--bg-primary);"><!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-8 md:px-12"
+<nav class="fixed top-0 left-0 right-0 z-50 px-6 py-8 md:px-12"
      style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);">
 
   <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -361,34 +361,36 @@ select.form-input option {
 
     <!-- Desktop Nav -->
     <div class="hidden md:flex items-center gap-8">
-      <a href="#" class="nav-link font-mono text-xs tracking-wider active"
-         onclick="navigateTo('home'); return false;">HOME</a>
-      <a href="#" class="nav-link font-mono text-xs tracking-wider"
-         onclick="navigateTo('about'); return false;">ABOUT</a>
-      <a href="#" class="nav-link font-mono text-xs tracking-wider"
-         onclick="navigateTo('services'); return false;">SERVICES</a>
-      <a href="#" class="nav-link font-mono text-xs tracking-wider"
-         onclick="navigateTo('bts'); return false;">BTS</a>
-      <a href="#" class="nav-link font-mono text-xs tracking-wider"
-         onclick="navigateTo('contact'); return false;">CONTACT</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider active" onclick="navigateTo('home'); return false;">HOME</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" onclick="navigateTo('about'); return false;">ABOUT</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" onclick="navigateTo('services'); return false;">SERVICES</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" onclick="navigateTo('bts'); return false;">BTS</a>
+      <a href="#" class="nav-link font-mono text-xs tracking-wider" onclick="navigateTo('contact'); return false;">CONTACT</a>
     </div>
-          <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 py-6"
-        style="background: var(--bg-primary);">
-        <div class="flex flex-col items-center gap-6"><a href="#" class="font-mono text-sm tracking-wider"
-            style="color: var(--text-primary);" onclick="navigateTo('home'); toggleMobileMenu(); return false;">WORK</a>
-          <a href="#" class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('services'); toggleMobileMenu(); return false;">SERVICES</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('about'); toggleMobileMenu(); return false;">ABOUT</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('bts'); toggleMobileMenu(); return false;">BTS</a> <a href="#"
-            class="font-mono text-sm tracking-wider" style="color: var(--text-primary);"
-            onclick="navigateTo('contact'); toggleMobileMenu(); return false;">CONTACT</a>
-        </div>
-      </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobileMenuBtn" class="md:hidden text-[var(--text-primary)]" onclick="toggleMobileMenu()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
 
   </div>
-</nav><!-- HOME PAGE -->
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-[var(--bg-primary)] py-6">
+    <div class="flex flex-col items-center gap-6">
+      <a href="#" class="font-mono text-sm tracking-wider text-[var(--text-primary)]" onclick="navigateTo('home'); toggleMobileMenu(); return false;">HOME</a>
+      <a href="#" class="font-mono text-sm tracking-wider text-[var(--text-primary)]" onclick="navigateTo('services'); toggleMobileMenu(); return false;">SERVICES</a>
+      <a href="#" class="font-mono text-sm tracking-wider text-[var(--text-primary)]" onclick="navigateTo('about'); toggleMobileMenu(); return false;">ABOUT</a>
+      <a href="#" class="font-mono text-sm tracking-wider text-[var(--text-primary)]" onclick="navigateTo('bts'); toggleMobileMenu(); return false;">BTS</a>
+      <a href="#" class="font-mono text-sm tracking-wider text-[var(--text-primary)]" onclick="navigateTo('contact'); toggleMobileMenu(); return false;">CONTACT</a>
+    </div>
+  </div>
+</nav>
+<!-- HOME PAGE -->
     <section id="page-home" class="page active"><!-- Hero Section -->
       <div class="pt-32 pb-16 px-6 md:px-12">
         <div class="max-w-7xl mx-auto">
