@@ -55,34 +55,34 @@
     }
 
     /* Carousel styles */
-    .carousel-container {
-      overflow: hidden;
-      position: relative;
-    }
+.carousel-container{
+  width:100%;
+  overflow:hidden;
+}
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+.carousel-track{
+  display:flex;
+  transition: transform 0.5s ease;
+}
 
-    .carousel-slide {
-      min-width: 100%;
-      padding: 0 5%;
-    }
+.carousel-slide{
+  flex:0 0 calc(100% / 3); /* desktop pe 3 cards */
+  padding:1px;
+}
 
-    @media (min-width: 768px) {
-      .carousel-slide {
-        min-width: 50%;
-        padding: 0 2%;
-      }
-    }
+/* tablet */
+@media (max-width:1024px){
+.carousel-slide{
+flex:0 0 calc(100% / 2);
+}
+}
 
-    @media (min-width: 1024px) {
-      .carousel-slide {
-        min-width: 33.333%;
-      }
-    }
-
+/* mobile */
+@media (max-width:768px){
+.carousel-slide{
+flex:0 0 100%;
+}
+}
     /* Marquee strip */
     .marquee {
       overflow: hidden;
@@ -149,6 +149,8 @@
 
     /* Hover effects */
     .work-item {
+      width: 100%;
+      height: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -420,7 +422,7 @@ select.form-input option {
             </div>
           </div>
           <div class="carousel-container">
-            <div id="carouselTrack" class="carousel-track"><!-- Work items -->
+            <div id="carouselTrack" class="carousel-track flex"><!-- Work items -->
               <div class="carousel-slide">
                 <div class="work-item vintage-border aspect-[4/5]"
                   style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);">
@@ -1169,17 +1171,20 @@ select.form-input option {
     }
 
     // Carousel
-    function moveCarousel(direction) {
-      const track = document.getElementById('carouselTrack');
-      const slidesVisible = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-      const maxPosition = totalSlides - slidesVisible;
+  function moveCarousel(direction) {
+  const track = document.getElementById('carouselTrack');
+  const slides = document.querySelectorAll('.carousel-slide');
 
-      carouselPosition += direction;
-      carouselPosition = Math.max(0, Math.min(carouselPosition, maxPosition));
+  const slidesVisible = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+  const maxPosition = slides.length - slidesVisible;
 
-      const slideWidth = 100 / slidesVisible;
-      track.style.transform = `translateX(-${carouselPosition * slideWidth}%)`;
-    }
+  carouselPosition += direction;
+  carouselPosition = Math.max(0, Math.min(carouselPosition, maxPosition));
+
+  const slideWidth = slides[0].offsetWidth;
+
+  track.style.transform = `translateX(-${carouselPosition * slideWidth}px)`;
+}
 
     // Formspree Integration (Safe Version)
     document.addEventListener("DOMContentLoaded", function () {
